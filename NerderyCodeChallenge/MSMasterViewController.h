@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MoviesList.h"
 @class MSDetailViewController;
 
-@interface MSMasterViewController : UITableViewController
+@interface MSMasterViewController : UITableViewController <MoviesListDelegate>
 
 @property (strong, nonatomic) MSDetailViewController *detailViewController;
+@property (strong, nonatomic) MoviesList * movieList;
+-(void) moviesList:(MoviesList*) moviesList fetchedMovies:(NSArray*) movies;
+-(void) moviesListFetchFailure:(MoviesList*) moviesList;
 
 @end

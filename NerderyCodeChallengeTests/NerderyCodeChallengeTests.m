@@ -7,7 +7,7 @@
 //
 
 #import "NerderyCodeChallengeTests.h"
-
+#import "Movie.h"
 @implementation NerderyCodeChallengeTests
 
 - (void)setUp
@@ -26,7 +26,7 @@
 
 - (void)testExample
 {
-    STFail(@"Unit tests are not implemented yet in NerderyCodeChallengeTests");
+    
 }
 
 @end

@@ -9,10 +9,14 @@
 #import "MSMasterViewController.h"
 
 #import "MSDetailViewController.h"
+#import "Movie.h"
+#import "MoviesList.h"
+#import "MovieCell.h"
 
 @implementation MSMasterViewController
 
 @synthesize detailViewController = _detailViewController;
+@synthesize movieList;
 
 - (void)awakeFromNib
 {
@@ -37,8 +41,12 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.detailViewController = (MSDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+//        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
     }
+    
+    self.movieList = [[MoviesList alloc] init];
+    self.movieList.delegate = self;
+
 }
 
 - (void)viewDidUnload
@@ -50,6 +58,9 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [self.movieList fetchTopTenBoxOfficeMovies];
+    
+    
     [super viewWillAppear:animated];
 }
 
@@ -115,5 +126,38 @@
     return YES;
 }
 */
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
+
+    cell.movie = [self.movieList.fetchedMovies objectAtIndex:indexPath.row];
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.movieList.fetchedMovies count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [self tableView:tableView cellForRowAtIndexPath:indexPath].frame.size.height;
+}
+
+-(void) moviesList:(MoviesList*) moviesList fetchedMovies:(NSArray*) movies {
+    [self.tableView reloadData];
+
+}
+-(void) moviesListFetchFailure:(MoviesList*) moviesList {
+    //show error message;
+    NSLog(@"failure");
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    Movie* movie = [self.movieList.fetchedMovies objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+    
+    NSLog(@"Movie %@", movie.name);
+}
+
 
 @end
