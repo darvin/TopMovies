@@ -18,8 +18,8 @@
 -(void) setMovie:(Movie *)movie {
     _movie = movie;
     self.name.text = movie.name;
+    NSLog(@"%@", [movie ratingImage]);
     [self.rating setImage:[movie ratingImage]];
-    NSLog(@"%@ - %@",movie.name, [movie.properties objectForKey:@"mpaa_rating"]);
     self.score.progress = movie.criticsScore/100.0;
     [self.poster setImageWithURL:[self.movie urlPosterWithSize:MoviePosterSizeThumbnail]];
 }

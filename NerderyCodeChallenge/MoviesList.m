@@ -20,7 +20,7 @@
 }
 
 -(void) fetchTopTenBoxOfficeMovies{
-    NSURLRequest *request = [NSURLRequest requestWithURL:[RottenTomatoesAPI topBoxOfficeMoviesLimit:40]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[RottenTomatoesAPI topBoxOfficeMoviesLimit:10]];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
             success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                 NSMutableArray * result = [[NSMutableArray alloc] init];

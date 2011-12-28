@@ -29,7 +29,7 @@
 }
 
 -(UIImage*) ratingImage {
-    return [UIImage imageNamed:[self.properties objectForKey:@"mpaa_rating"]];
+    return [UIImage imageNamed:[[self.properties objectForKey:@"mpaa_rating"] lowercaseString]];
 }
 
 

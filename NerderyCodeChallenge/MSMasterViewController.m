@@ -156,7 +156,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     Movie* movie = [self.movieList.fetchedMovies objectAtIndex:[self.tableView indexPathForSelectedRow].row];
     
-    NSLog(@"Movie %@", movie.name);
+    self.detailViewController.detailItem = movie;
 }
 
 
