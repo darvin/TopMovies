@@ -20,6 +20,11 @@ typedef enum {
 @property (strong, nonatomic) NSDictionary * properties;
 @property (readonly) NSString* name;
 @property (readonly) NSUInteger criticsScore;
+@property (readonly) NSString* criticsFreshness;
+@property (readonly) NSString* synopsis;
+@property (readonly) NSUInteger runtime;
+@property (readonly) NSDictionary* cast;
+
 
 -(UIImage*) ratingImage;
 -(id) initWithProperties:(NSDictionary*) properties;

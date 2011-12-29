@@ -7,6 +7,7 @@
 //
 
 #import "MSDetailViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface MSDetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -18,7 +19,7 @@
 @synthesize detailItem = _detailItem;
 @synthesize detailDescriptionLabel = _detailDescriptionLabel;
 @synthesize masterPopoverController = _masterPopoverController;
-
+@synthesize moviePoster = _moviePoster, movieDescription = _movieDescription, scrollView=_scrollView;
 #pragma mark - Managing the detail item
 
 - (void)setDetailItem:(id)newDetailItem
@@ -35,12 +36,41 @@
     }        
 }
 
+
+
+// UIWebViewImplementation
+//
+//
+- (NSString*) getHTMLMovieDescription {
+    Movie * movie = (Movie*) self.detailItem;
+    NSMutableString * castString = [[NSMutableString alloc] init];
+    
+    NSUInteger runtimeHours = movie.runtime/60;
+    NSUInteger runtimeMinutes = movie.runtime%60;
+
+    
+    NSDictionary * movieCast = movie.cast;
+    for (NSString* actorName in movieCast) {
+        [castString appendFormat:@"%@ as %@<br>", actorName, [movieCast objectForKey:actorName]];
+    }
+    
+    return  [NSString stringWithFormat:@"<b>Synopsis</b><br>%@ <br> <b>Cast</b><br> %@ <hr /> Rated %d • Freshness: %@ • Runtime: %d hr %d min", movie.synopsis, castString, movie.criticsScore, movie.criticsFreshness, runtimeHours, runtimeMinutes];
+}
+
+- (void) webViewDidFinishLoad: (UIWebView *)sender {
+    [self.movieDescription sizeToFit];
+    
+    self.scrollView.contentSize = CGSizeMake(self.movieDescription.frame.size.width, self.movieDescription.frame.origin.y+self.movieDescription.frame.size.height);
+}
+
 - (void)configureView
 {
-    // Update the user interface for the detail item.
-
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+        Movie * movie = (Movie*) self.detailItem;
+        self.title = movie.name;
+        [self.moviePoster setImageWithURL: [movie urlPosterWithSize:MoviePosterSizeOriginal]];
+        
+        [self.movieDescription loadHTMLString:[self getHTMLMovieDescription] baseURL:nil];
     }
 }
 

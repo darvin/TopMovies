@@ -40,12 +40,14 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.detailViewController = (MSDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-//        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
-    }
+    
+
     
     self.movieList = [[MoviesList alloc] init];
     self.movieList.delegate = self;
+    [self.movieList fetchTopTenBoxOfficeMovies];
+
+
 
 }
 
@@ -58,7 +60,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.movieList fetchTopTenBoxOfficeMovies];
     
     
     [super viewWillAppear:animated];
@@ -146,6 +147,11 @@
 
 -(void) moviesList:(MoviesList*) moviesList fetchedMovies:(NSArray*) movies {
     [self.tableView reloadData];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        NSIndexPath * firstRow = [NSIndexPath indexPathForRow:0 inSection:0];
+        [self.tableView selectRowAtIndexPath: firstRow animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+        [self tableView:self.tableView didSelectRowAtIndexPath:firstRow];
+    }
 
 }
 -(void) moviesListFetchFailure:(MoviesList*) moviesList {
@@ -153,10 +159,16 @@
     NSLog(@"failure");
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    Movie* movie = [self.movieList.fetchedMovies objectAtIndex:[self.tableView indexPathForSelectedRow].row];
-    
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"%@", self.detailViewController);
+    Movie* movie = [self.movieList.fetchedMovies objectAtIndex:indexPath.row];
     self.detailViewController.detailItem = movie;
+    
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    self.detailViewController = (MSDetailViewController *)(segue.destinationViewController);
+    
 }
 
 
