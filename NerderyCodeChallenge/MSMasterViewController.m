@@ -23,6 +23,7 @@
 
 @synthesize detailViewController = _detailViewController;
 @synthesize movieList;
+@synthesize showFavorites;
 
 - (void)awakeFromNib
 {
@@ -97,7 +98,10 @@
 }
 
 -(Movie*) movieByIndexPath:(NSIndexPath*) indexPath {
-    return [self.movieList.fetchedMovies objectAtIndex:indexPath.row];
+    if (!self.showFavorites)
+        return [self.movieList.fetchedMovies objectAtIndex:indexPath.row];
+    else
+        return 
 }
 
 
@@ -154,5 +158,10 @@
     }
 }
 
+-(IBAction)toggleFavorites:(id)sender {
+    self.showFavorites = ! self.showFavorites;
+    [self.tableView reloadData];
+
+}
 
 @end

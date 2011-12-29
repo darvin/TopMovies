@@ -60,6 +60,17 @@
 }
 
 
++(Movie*) savedMovieAtIndex:(NSUInteger) index {
+    NSArray *movies = [self MR_findAll];
+    return [[movies objectAtIndex:index] asMovie];
+}
+
+
+-(Movie*) asMovie {
+    
+    return [[Movie alloc] initWithMovieData:self];
+}
+
 -(void) loadPoster:(NSURL*) url {
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:request imageProcessingBlock: ^(UIImage* image) {return image;} cacheName:@"justname" success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {

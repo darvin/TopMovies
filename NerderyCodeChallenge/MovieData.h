@@ -37,5 +37,7 @@
 + (MovieData*)saveMovie:(Movie*) movie;
 + (void)unsaveMovie:(Movie*) movie;
 + (NSSet*) savedMoviesNames;
++(Movie*) savedMovieAtIndex:(NSUInteger) index;
+-(Movie*) asMovie;
 
 @end

@@ -18,5 +18,6 @@
 -(void) moviesListFetchFailure:(MoviesList*) moviesList;
 
 -(IBAction)favoriteButtonClicked:(UIButton*)sender;
-
+@property BOOL showFavorites;
+-(IBAction)toggleFavorites:(id)sender;
 @end

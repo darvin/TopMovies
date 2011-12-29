@@ -141,7 +141,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Movies" id="39">
-                        <barButtonItem key="leftBarButtonItem" image="star.png" id="LiN-Oh-42p"/>
+                        <barButtonItem key="leftBarButtonItem" image="star.png" id="LiN-Oh-42p">
+                            <connections>
+                                <action selector="toggleFavorites:" destination="19" id="t7d-ss-OdZ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
             </objects>
