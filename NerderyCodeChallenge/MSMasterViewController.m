@@ -12,6 +12,12 @@
 #import "Movie.h"
 #import "MoviesList.h"
 #import "MovieCell.h"
+#import "MovieData.h"
+
+@interface MSMasterViewController()
+-(Movie*) movieByIndexPath:(NSIndexPath*) indexPath;
+
+@end
 
 @implementation MSMasterViewController
 
@@ -90,49 +96,15 @@
     }
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+-(Movie*) movieByIndexPath:(NSIndexPath*) indexPath {
+    return [self.movieList.fetchedMovies objectAtIndex:indexPath.row];
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source.
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
 
-    cell.movie = [self.movieList.fetchedMovies objectAtIndex:indexPath.row];
+    cell.movie = [self movieByIndexPath:indexPath];
     
     return cell;
 }
@@ -162,7 +134,7 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"%@", self.detailViewController);
-    Movie* movie = [self.movieList.fetchedMovies objectAtIndex:indexPath.row];
+    Movie* movie = [self movieByIndexPath:indexPath];
     self.detailViewController.detailItem = movie;
     
 }
@@ -173,11 +145,12 @@
 
 -(IBAction)favoriteButtonClicked:(UIButton*)sender {
     sender.selected = !sender.selected;
-    
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)[[sender superview] superview]];
+    Movie* movie = [self movieByIndexPath:indexPath];
     if (sender.selected) {
-//        [sender setSelected:NO];
+        [MovieData saveMovie:movie];
     } else {
-//        [sender setSelected:YES];
+        [MovieData unsaveMovie:movie];
     }
 }
 

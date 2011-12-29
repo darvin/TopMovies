@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-
+#import "Movie.h"
 
 @interface MovieData : NSManagedObject
 
@@ -33,5 +33,9 @@
 - (void)removeActorsObject:(NSManagedObject *)value;
 - (void)addActors:(NSSet *)values;
 - (void)removeActors:(NSSet *)values;
+
++ (MovieData*)saveMovie:(Movie*) movie;
++ (void)unsaveMovie:(Movie*) movie;
++ (NSSet*) savedMoviesNames;
 
 @end

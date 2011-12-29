@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="878" systemVersion="11C74" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Actor" syncable="YES">
+    <entity name="ActorData" representedClassName="ActorData" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="characters" optional="YES" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="Character" inverseName="actor" inverseEntity="Character" syncable="YES"/>
+        <relationship name="characters" optional="YES" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="CharacterData" inverseName="actor" inverseEntity="CharacterData" syncable="YES"/>
         <relationship name="movies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MovieData" inverseName="actors" inverseEntity="MovieData" syncable="YES"/>
     </entity>
-    <entity name="Character" syncable="YES">
+    <entity name="CharacterData" representedClassName="CharacterData" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="actor" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Actor" inverseName="characters" inverseEntity="Actor" syncable="YES"/>
+        <relationship name="actor" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ActorData" inverseName="characters" inverseEntity="ActorData" syncable="YES"/>
         <relationship name="movie" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="MovieData" inverseName="characters" inverseEntity="MovieData" syncable="YES"/>
     </entity>
     <entity name="MovieData" representedClassName="MovieData" syncable="YES">
@@ -17,12 +17,12 @@
         <attribute name="poster" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="runtime" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="synopsis" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="actors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Actor" inverseName="movies" inverseEntity="Actor" syncable="YES"/>
-        <relationship name="characters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="movie" inverseEntity="Character" syncable="YES"/>
+        <relationship name="actors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ActorData" inverseName="movies" inverseEntity="ActorData" syncable="YES"/>
+        <relationship name="characters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CharacterData" inverseName="movie" inverseEntity="CharacterData" syncable="YES"/>
     </entity>
     <elements>
+        <element name="ActorData" positionX="160" positionY="192" width="128" height="90"/>
+        <element name="CharacterData" positionX="160" positionY="192" width="128" height="90"/>
         <element name="MovieData" positionX="160" positionY="192" width="128" height="165"/>
-        <element name="Actor" positionX="160" positionY="192" width="128" height="90"/>
-        <element name="Character" positionX="160" positionY="192" width="128" height="90"/>
     </elements>
 </model>

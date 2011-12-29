@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5781E8D114ACDB9A0023F62B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5781E8D014ACDB9A0023F62B /* CoreData.framework */; };
+		5781E8D414ACF7350023F62B /* ActorData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5781E8D314ACF7350023F62B /* ActorData.m */; };
+		5781E8D714ACF7360023F62B /* CharacterData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5781E8D614ACF7360023F62B /* CharacterData.m */; };
 		57B054AF14AC4F0700BBD722 /* star-inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 57B054AB14AC4F0700BBD722 /* star-inactive.png */; };
 		57B054B014AC4F0700BBD722 /* star-inactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57B054AC14AC4F0700BBD722 /* star-inactive@2x.png */; };
 		57B054B114AC4F0700BBD722 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 57B054AD14AC4F0700BBD722 /* star.png */; };
@@ -84,6 +87,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5781E8D014ACDB9A0023F62B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		5781E8D214ACF7350023F62B /* ActorData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActorData.h; sourceTree = "<group>"; };
+		5781E8D314ACF7350023F62B /* ActorData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActorData.m; sourceTree = "<group>"; };
+		5781E8D514ACF7360023F62B /* CharacterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterData.h; sourceTree = "<group>"; };
+		5781E8D614ACF7360023F62B /* CharacterData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterData.m; sourceTree = "<group>"; };
 		57B054AB14AC4F0700BBD722 /* star-inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-inactive.png"; sourceTree = "<group>"; };
 		57B054AC14AC4F0700BBD722 /* star-inactive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-inactive@2x.png"; sourceTree = "<group>"; };
 		57B054AD14AC4F0700BBD722 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
@@ -195,6 +203,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5781E8D114ACDB9A0023F62B /* CoreData.framework in Frameworks */,
 				57F6252814AA740F006E16A7 /* UIKit.framework in Frameworks */,
 				57F6252A14AA740F006E16A7 /* Foundation.framework in Frameworks */,
 				57F6252C14AA740F006E16A7 /* CoreGraphics.framework in Frameworks */,
@@ -289,6 +298,7 @@
 		57F6251814AA740F006E16A7 = {
 			isa = PBXGroup;
 			children = (
+				5781E8D014ACDB9A0023F62B /* CoreData.framework */,
 				57F6262A14AA7F6E006E16A7 /* 72.png */,
 				57F6262814AA7EE2006E16A7 /* 114.png */,
 				57F6262614AA7EDA006E16A7 /* 57.png */,
@@ -381,6 +391,10 @@
 				57F6263414AA8EB0006E16A7 /* MoviesList.m */,
 				57B055E414AC55DF00BBD722 /* MovieData.h */,
 				57B055E514AC55DF00BBD722 /* MovieData.m */,
+				5781E8D514ACF7360023F62B /* CharacterData.h */,
+				5781E8D614ACF7360023F62B /* CharacterData.m */,
+				5781E8D214ACF7350023F62B /* ActorData.h */,
+				5781E8D314ACF7350023F62B /* ActorData.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -652,6 +666,8 @@
 				57B0559F14AC558200BBD722 /* MagicalRecordHelpers.m in Sources */,
 				57B055A014AC558200BBD722 /* MRCoreDataAction.m in Sources */,
 				57B055E614AC55DF00BBD722 /* MovieData.m in Sources */,
+				5781E8D414ACF7350023F62B /* ActorData.m in Sources */,
+				5781E8D714ACF7360023F62B /* CharacterData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

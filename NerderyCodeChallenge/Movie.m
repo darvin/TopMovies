@@ -7,7 +7,6 @@
 //
 
 #import "Movie.h"
-#import "AFNetworking.h"
 #import "RottenTomatoesAPI.h"
 
 @implementation Movie

@@ -7,6 +7,13 @@
 //
 
 #import "MSAppDelegate.h"
+#import "MagicalRecordHelpers.h"
+#import "MagicalRecordShorthand.h"
+
+@interface MSAppDelegate ()
+
+-(void) saveDataContext;
+@end
 
 @implementation MSAppDelegate
 
@@ -20,6 +27,10 @@
         UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
         splitViewController.delegate = (id)navigationController.topViewController;
     }
+    
+    
+    [MagicalRecordHelpers setupAutoMigratingCoreDataStack];
+    
     return YES;
 }
 							
@@ -37,6 +48,8 @@
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
+    [self saveDataContext];
+
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -60,6 +73,18 @@
      Save data if appropriate.
      See also applicationDidEnterBackground:.
      */
+    
+    [self saveDataContext];
+    [MagicalRecordHelpers cleanUp];
+}
+
+
+-(void) saveDataContext {
+    
+    [[NSManagedObjectContext MR_defaultContext] MR_saveWithErrorHandler: ^(NSError *error) {
+        NSLog(@"Error while saving %@", ([error localizedDescription] != nil) ? [error localizedDescription] : @"Unknown Error");
+        exit(1);
+    } ];
 }
 
 @end
