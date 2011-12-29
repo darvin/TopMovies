@@ -85,7 +85,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
+    [(UIScrollView *) [self.movieDescription.subviews objectAtIndex:0] setAlwaysBounceVertical:NO];
+
     [self configureView];
 }
 
