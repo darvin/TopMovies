@@ -96,7 +96,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <progressView opaque="NO" contentMode="scaleToFill" id="rNb-Ly-hq3">
-                                            <rect key="frame" x="74" y="66" width="226" height="9"/>
+                                            <rect key="frame" x="74" y="66" width="196" height="9"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </progressView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="characterWrap" minimumFontSize="14" id="Jss-Ev-X9u">
@@ -106,6 +106,22 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Zc7-T0-IrO">
+                                            <rect key="frame" x="274" y="58" width="26" height="26"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                            <state key="normal" image="star-inactive.png">
+                                                <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="selected" image="star.png"/>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="favoriteButtonClicked:" destination="19" eventType="touchUpInside" id="H5e-9O-HM5"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -144,6 +160,10 @@
             <point key="canvasLocation" x="-390" y="686"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="star-inactive.png" width="26" height="26"/>
+        <image name="star.png" width="26" height="26"/>
+    </resources>
     <classes>
         <class className="MSDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSDetailViewController.h"/>
@@ -156,6 +176,9 @@
         </class>
         <class className="MSMasterViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSMasterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="favoriteButtonClicked:" candidateClass="UIButton"/>
+            </relationships>
         </class>
         <class className="MovieCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MovieCell.h"/>

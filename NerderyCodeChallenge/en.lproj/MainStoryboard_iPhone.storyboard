@@ -44,7 +44,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <progressView opaque="NO" contentMode="scaleToFill" id="fcc-1z-Nh9">
-                                            <rect key="frame" x="74" y="66" width="226" height="9"/>
+                                            <rect key="frame" x="74" y="66" width="193" height="9"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </progressView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="characterWrap" minimumFontSize="14" id="pS0-RH-L6s">
@@ -54,6 +54,22 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bYq-rN-Sk5">
+                                            <rect key="frame" x="274" y="57.5" width="26" height="26"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                            <state key="normal" image="star-inactive.png">
+                                                <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="selected" image="star.png"/>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="favoriteButtonClicked:" destination="12" eventType="touchUpInside" id="W5t-2N-wS6"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -115,6 +131,10 @@
             <point key="canvasLocation" x="924" y="64"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="star-inactive.png" width="26" height="26"/>
+        <image name="star.png" width="26" height="26"/>
+    </resources>
     <classes>
         <class className="MSDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSDetailViewController.h"/>
@@ -127,6 +147,9 @@
         </class>
         <class className="MSMasterViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSMasterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="favoriteButtonClicked:"/>
+            </relationships>
         </class>
         <class className="MovieCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MovieCell.h"/>

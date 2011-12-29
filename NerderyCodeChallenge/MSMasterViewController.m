@@ -171,5 +171,15 @@
     
 }
 
+-(IBAction)favoriteButtonClicked:(UIButton*)sender {
+    sender.selected = !sender.selected;
+    
+    if (sender.selected) {
+//        [sender setSelected:NO];
+    } else {
+//        [sender setSelected:YES];
+    }
+}
+
 
 @end

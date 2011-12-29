@@ -17,4 +17,6 @@
 -(void) moviesList:(MoviesList*) moviesList fetchedMovies:(NSArray*) movies;
 -(void) moviesListFetchFailure:(MoviesList*) moviesList;
 
+-(IBAction)favoriteButtonClicked:(UIButton*)sender;
+
 @end

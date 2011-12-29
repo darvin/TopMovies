@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Movie.h"
 
-#define RIGHT_MARGIN 20
+#define RIGHT_MARGIN 28
 #define GAP_BETWEEN_TITLE_AND_RATING 5
 
 @interface MovieCell : UITableViewCell
