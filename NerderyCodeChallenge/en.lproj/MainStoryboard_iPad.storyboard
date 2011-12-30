@@ -27,7 +27,7 @@
                         <rect key="frame" x="0.0" y="64" width="703" height="660"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="JVj-zO-mFC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="512.png" id="JVj-zO-mFC">
                                 <rect key="frame" x="0.0" y="12" width="703" height="253"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -45,7 +45,7 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </scrollView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Detail" id="52">
+                    <navigationItem key="navigationItem" title="Movie" id="52">
                         <barButtonItem key="rightBarButtonItem" title="Tweet" id="TKt-8W-Fky">
                             <connections>
                                 <action selector="tweet:" destination="4" id="MfL-qV-cXS"/>
@@ -149,7 +149,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Movies" id="39">
-                        <barButtonItem key="leftBarButtonItem" image="star.png" id="LiN-Oh-42p">
+                        <barButtonItem key="leftBarButtonItem" image="favorites.png" id="LiN-Oh-42p">
                             <connections>
                                 <action selector="toggleFavorites:" destination="19" id="t7d-ss-OdZ"/>
                             </connections>
@@ -178,6 +178,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="512.png" width="512" height="512"/>
+        <image name="favorites.png" width="26" height="26"/>
         <image name="star-inactive.png" width="26" height="26"/>
         <image name="star.png" width="26" height="26"/>
     </resources>

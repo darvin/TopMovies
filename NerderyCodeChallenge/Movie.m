@@ -85,4 +85,8 @@
     return [NSURL URLWithString:[[self.properties objectForKey:@"posters"] objectForKey:sizeName]];
 }
 
+- (BOOL)isEqual:(id)other {
+    return [[self rottenId] isEqualToString:[other rottenId]];
+}
+
 @end

@@ -50,14 +50,9 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.detailViewController = (MSDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
-
-    
     self.movieList = [[MoviesList alloc] init];
     self.movieList.delegate = self;
     [self fetchMovies];
-
-
-
 }
 
 - (void)viewDidUnload
@@ -130,13 +125,7 @@
 
 -(void) moviesList:(MoviesList*) moviesList fetchedMovies:(NSArray*) movies {
     [self.tableView reloadData];
-    [SVProgressHUD dismissWithSuccess:NSLocalizedString(@"Done", nil)];
-
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        NSIndexPath * firstRow = [NSIndexPath indexPathForRow:0 inSection:0];
-        [self.tableView selectRowAtIndexPath: firstRow animated:NO scrollPosition:UITableViewScrollPositionMiddle];
-        [self tableView:self.tableView didSelectRowAtIndexPath:firstRow];
-    }
+    [SVProgressHUD dismiss];
 
 }
 -(void) moviesListFetchFailure:(MoviesList*) moviesList {
@@ -153,9 +142,10 @@
     self.detailViewController.detailItem = movie;
     
 }
+
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     self.detailViewController = (MSDetailViewController *)(segue.destinationViewController);
-    
 }
 
 -(IBAction)favoriteButtonClicked:(UIButton*)sender {
@@ -177,11 +167,11 @@
     self.showFavorites = ! self.showFavorites;
     if (!showFavorites) {
         self.title = NSLocalizedString(@"Movies", nil);
-        self.favoriteButton.image = [UIImage imageNamed:@"star"];
+        self.favoriteButton.image = [UIImage imageNamed:@"favorites"];
         [self fetchMovies];
     } else {
         self.title = NSLocalizedString(@"Favorites", nil);
-        self.favoriteButton.image = [UIImage imageNamed:@"list"];
+        self.favoriteButton.image = [UIImage imageNamed:@"all-movies"];
         [self.tableView reloadData];
     }
 
@@ -189,7 +179,10 @@
 
 -(void) fetchMovies {
     [self.movieList fetchTopTenBoxOfficeMovies];
-    [SVProgressHUD showWithStatus:NSLocalizedString(@"Loading", nil)];
+
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"Loading", nil)];
 }
+
+
 
 @end

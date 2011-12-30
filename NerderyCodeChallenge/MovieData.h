@@ -16,12 +16,8 @@
 @property (nonatomic, retain) NSData * poster;
 @property (nonatomic, retain) NSData * properties;
 
-@end
 
-@interface MovieData (CoreDataGeneratedAccessors)
-
-
-
++ (NSMutableArray*) movies;
 + (MovieData*)saveMovie:(Movie*) movie;
 + (void)unsaveMovie:(Movie*) movie;
 + (NSSet*) savedMoviesIds;

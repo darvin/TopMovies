@@ -37,10 +37,6 @@
 }
 
 
-
-// UIWebViewImplementation
-//
-//
 - (NSString*) getHTMLMovieDescription {
     Movie * movie = (Movie*) self.detailItem;
     NSMutableString * castString = [[NSMutableString alloc] init];
@@ -136,7 +132,7 @@
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
 {
-    barButtonItem.title = NSLocalizedString(@"Master", @"Master");
+    barButtonItem.title = NSLocalizedString(@"Movies", nil);
     [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
     self.masterPopoverController = popoverController;
 }

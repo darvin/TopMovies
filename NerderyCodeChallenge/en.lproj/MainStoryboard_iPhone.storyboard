@@ -92,7 +92,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Movies" id="35">
-                        <barButtonItem key="leftBarButtonItem" image="star.png" id="tYQ-i9-WDa">
+                        <barButtonItem key="leftBarButtonItem" image="favorites.png" id="tYQ-i9-WDa">
                             <connections>
                                 <action selector="toggleFavorites:" destination="12" id="WmM-MZ-lVk"/>
                             </connections>
@@ -148,6 +148,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="favorites.png" width="26" height="26"/>
         <image name="star-inactive.png" width="26" height="26"/>
         <image name="star.png" width="26" height="26"/>
     </resources>

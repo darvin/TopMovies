@@ -19,6 +19,25 @@
 @dynamic properties;
 @dynamic poster;
 
+
+//Using caching of movies. For speed.
++ (NSMutableArray*) movies {
+    static NSMutableArray *movies;
+    
+    @synchronized(self)
+    {
+        if (!movies) {
+            NSArray* moviesDatas = [self MR_findAll];
+            movies = [[NSMutableArray alloc] initWithCapacity:[moviesDatas count]];
+            for (MovieData* movieData in moviesDatas) {
+                [movies addObject:[movieData asMovie]];
+            }
+        }
+        return movies;
+    }
+}
+
+
 + (MovieData*)saveMovie:(Movie*) movie {
     MovieData* newMovie = [self MR_findFirstByAttribute:@"id" withValue:movie.rottenId];
     if (!newMovie) {
@@ -32,22 +51,27 @@
         newMovie.properties = data;
         
         [newMovie loadPoster:[movie urlPosterWithSize:MoviePosterSizeOriginal]];
-        
-        
-        
+        [[self movies] addObject:[newMovie asMovie]];
     }
     return newMovie;
 }
+
+
 + (void)unsaveMovie:(Movie*) movie {
     MovieData* movieData = [self MR_findFirstByAttribute:@"id" withValue:movie.rottenId];
     [movieData.managedObjectContext deleteObject:movieData];
+    NSMutableArray *movies = [self movies];
+    for (int i=0; i<[movies count]; i++) {
+        if ([[movies objectAtIndex:i] isEqual:movie]) 
+            [movies removeObjectAtIndex:i];
+    }
 }
 
 + (NSSet*) savedMoviesIds {
-    NSArray *movies = [self MR_findAll];
+    NSArray *movies = [self movies];
     NSMutableSet* result = [[NSMutableSet alloc] initWithCapacity:[movies count]];
-    for (MovieData* movie in movies) {
-        [result addObject:movie.id];
+    for (Movie* movie in movies) {
+        [result addObject:movie.rottenId];
     }
 
     return result;
@@ -55,12 +79,11 @@
 
 
 +(Movie*) savedMovieAtIndex:(NSUInteger) index {
-    NSArray *movies = [self MR_findAll];
-    return [[movies objectAtIndex:index] asMovie];
+    return [[self movies] objectAtIndex:index];
 }
 
 +(NSUInteger) savedMoviesCount {
-    return [[self MR_numberOfEntities] intValue];
+    return [[self movies] count];
 }
 
 -(Movie*) asMovie {
