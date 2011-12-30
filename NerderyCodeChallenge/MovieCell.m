@@ -9,6 +9,7 @@
 #import "MovieCell.h"
 #import "Movie.h"
 #import "UIImageView+AFNetworking.h"
+#import "MovieData.h"
 
 @implementation MovieCell
 @synthesize name, poster, rating, score, favorite;
@@ -48,5 +49,16 @@
     self.rating.frame = CGRectMake(ratingX, self.rating.frame.origin.y, ratingWidth, self.rating.frame.size.height);
 }
 
+
+-(IBAction)favoriteButtonClicked:(UIButton*)sender {
+    if ([MovieData toggleSavedMovie:self.movie])
+        [self setNeedsDisplay]; // repaint
+}
+
+
+-(void) drawRect:(CGRect)rect {
+    self.favorite.selected =  ([[MovieData movies] containsObject:self.movie]);
+    [super drawRect:rect];
+}
 
 @end

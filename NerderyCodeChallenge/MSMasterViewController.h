@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "MoviesFetcher.h"
+
+
+
 @class MSDetailViewController;
 
 @interface MSMasterViewController : UITableViewController <MoviesFetcherDelegate>
@@ -25,7 +28,5 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem* favoriteButton;
 -(IBAction)toggleFavorites:(id)sender;
 
-//Save/unsave button clicked
--(IBAction)favoriteButtonClicked:(UIButton*)sender;
 
 @end

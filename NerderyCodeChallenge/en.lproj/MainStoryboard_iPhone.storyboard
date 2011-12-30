@@ -67,7 +67,7 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="favoriteButtonClicked:" destination="12" eventType="touchUpInside" id="W5t-2N-wS6"/>
+                                                <action selector="favoriteButtonClicked:" destination="R9b-Gp-m2q" eventType="touchUpInside" id="8O2-WC-jhG"/>
                                             </connections>
                                         </button>
                                     </subviews>

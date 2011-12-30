@@ -103,9 +103,9 @@
     MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
 
     cell.movie = [self movieByIndexPath:indexPath];
-    if (self.showFavorites) {
-        cell.favorite.selected = YES;
-    }
+    
+    cell.favorite.selected =  ([[MovieData movies] containsObject:cell.movie]);
+        
     return cell;
 }
 
@@ -142,22 +142,6 @@
 //Before segue we should prepare a little hack for our tableView:didSelectRowAtIndexPath:
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     self.detailViewController = (MSDetailViewController *)(segue.destinationViewController);
-}
-
-//Favorite button on cell clicked. Better to be in MovieCell, really.
--(IBAction)favoriteButtonClicked:(UIButton*)sender {
-    sender.selected = !sender.selected;
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)[[sender superview] superview]];
-    Movie* movie = [self movieByIndexPath:indexPath];
-    if (sender.selected) {
-        [MovieData saveMovie:movie];
-    } else {
-        [MovieData unsaveMovie:movie];
-        if (self.showFavorites) {
-            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
-                                  withRowAnimation:UITableViewRowAnimationFade]; 
-        };
-    }
 }
 
 

@@ -126,7 +126,7 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="favoriteButtonClicked:" destination="19" eventType="touchUpInside" id="H5e-9O-HM5"/>
+                                                <action selector="favoriteButtonClicked:" destination="boe-CA-Mvl" eventType="touchUpInside" id="n1j-Ec-i0S"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -204,6 +204,7 @@
         <class className="MovieCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MovieCell.h"/>
             <relationships>
+                <relationship kind="action" name="favoriteButtonClicked:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="favorite" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="name" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="poster" candidateClass="UIImageView"/>

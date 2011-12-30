@@ -52,20 +52,25 @@
 
 
 + (MovieData*)saveMovie:(Movie*) movie {
+    
+    if ([[self movies] count]>=MAX_SAVED_FAVORITES)
+        return nil;
+    
     MovieData* newMovie = [self MR_findFirstByAttribute:@"id" withValue:movie.rottenId];
+    
     if (!newMovie) {
         newMovie = [self MR_createEntity];
         newMovie.id = movie.rottenId;
-        
-        NSMutableData *data = [[NSMutableData alloc] init];
-        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-        [archiver encodeObject:movie.properties];
-        [archiver finishEncoding];
-        newMovie.properties = data;
-        
-        [newMovie loadPoster:[movie urlPosterWithSize:MoviePosterSizeOriginal]];
-        [[self movies] addObject:[newMovie asMovie]];
     }
+
+    NSMutableData *data = [[NSMutableData alloc] init];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    [archiver encodeObject:movie.properties];
+    [archiver finishEncoding];
+    newMovie.properties = data;
+    
+    [newMovie loadPoster:[movie urlPosterWithSize:MoviePosterSizeOriginal]];
+    [[self movies] addObject:[newMovie asMovie]];
     return newMovie;
 }
 
@@ -107,5 +112,14 @@
         self.poster = (NSData*) responseObject;
     } failure:nil];  
     [[self sharedQueue] addOperation:operation];
+}
+
++ (BOOL) toggleSavedMovie:(Movie*) movie {
+    if ([[self movies] containsObject:movie]) {
+        [self unsaveMovie:movie];
+        return YES;
+    } else {
+        return ([self saveMovie:movie]!=nil);
+    }
 }
 @end
