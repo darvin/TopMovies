@@ -20,7 +20,7 @@
 @dynamic poster;
 
 
-//Using caching of movies. For speed.
+
 + (NSMutableArray*) movies {
     static NSMutableArray *movies;
     
@@ -77,14 +77,6 @@
     return result;
 }
 
-
-+(Movie*) savedMovieAtIndex:(NSUInteger) index {
-    return [[self movies] objectAtIndex:index];
-}
-
-+(NSUInteger) savedMoviesCount {
-    return [[self movies] count];
-}
 
 -(Movie*) asMovie {
     NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:self.properties];

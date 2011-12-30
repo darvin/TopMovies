@@ -28,7 +28,7 @@
         splitViewController.delegate = (id)navigationController.topViewController;
     }
     
-    
+    //Setup CoreData stack
     [MagicalRecordHelpers setupAutoMigratingCoreDataStack];
     
     return YES;
@@ -78,9 +78,8 @@
     [MagicalRecordHelpers cleanUp];
 }
 
-
+//Save CoreData context
 -(void) saveDataContext {
-    
     [[NSManagedObjectContext MR_defaultContext] MR_saveWithErrorHandler: ^(NSError *error) {
         NSLog(@"Error while saving %@", ([error localizedDescription] != nil) ? [error localizedDescription] : @"Unknown Error");
         exit(1);

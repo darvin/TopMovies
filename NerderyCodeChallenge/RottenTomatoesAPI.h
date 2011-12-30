@@ -13,6 +13,7 @@ extern NSString * const RottenTomatoesVersion;
 
 @interface RottenTomatoesAPI : NSObject
 
+//Just returns appropriate URL for request
 +(NSURL*) topBoxOfficeMoviesLimit:(NSUInteger)limit;
 
 @end

@@ -10,7 +10,7 @@
 
 #import "MSDetailViewController.h"
 #import "Movie.h"
-#import "MoviesList.h"
+#import "MoviesFetcher.h"
 #import "MovieCell.h"
 #import "MovieData.h"
 
@@ -24,7 +24,7 @@
 @implementation MSMasterViewController
 
 @synthesize detailViewController = _detailViewController;
-@synthesize movieList;
+@synthesize movieFetcher, movies=_movies;
 @synthesize showFavorites, favoriteButton;
 
 - (void)awakeFromNib
@@ -47,11 +47,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     self.detailViewController = (MSDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
-    self.movieList = [[MoviesList alloc] init];
-    self.movieList.delegate = self;
+    //Fetching movies
+    self.movieFetcher = [[MoviesFetcher alloc] init];
+    self.movieFetcher.delegate = self;
     [self fetchMovies];
 }
 
@@ -95,10 +95,7 @@
 }
 
 -(Movie*) movieByIndexPath:(NSIndexPath*) indexPath {
-    if (!self.showFavorites)
-        return [self.movieList.fetchedMovies objectAtIndex:indexPath.row];
-    else
-        return [MovieData savedMovieAtIndex:indexPath.row];
+    return [self.movies objectAtIndex:indexPath.row];
 }
 
 
@@ -113,29 +110,29 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (!self.showFavorites)
-        return [self.movieList.fetchedMovies count];
-    else
-        return [MovieData savedMoviesCount];
+    return [self.movies count];
 }
 
+//Row height = cell height
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [self tableView:tableView cellForRowAtIndexPath:indexPath].frame.size.height;
 }
 
--(void) moviesList:(MoviesList*) moviesList fetchedMovies:(NSArray*) movies {
+//Calls on movies fetch success
+-(void) moviesFetcher:(MoviesFetcher *)moviesFetcher fetchedMovies:(NSArray *)movies {
+    self.movies = movies;
     [self.tableView reloadData];
     [SVProgressHUD dismiss];
-
 }
--(void) moviesListFetchFailure:(MoviesList*) moviesList {
 
+//Calls on movies fetch failure
+-(void) moviesFetcherFetchFailure:(MoviesFetcher *)moviesFetcher {
+    //so we go offline, favorites only
     [self toggleFavorites:self];
     [SVProgressHUD dismissWithError:NSLocalizedString(@"Offline", nil)];
-
 }
 
-
+//Setting current movie as detailItem of detailViewController 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"%@", self.detailViewController);
     Movie* movie = [self movieByIndexPath:indexPath];
@@ -143,11 +140,12 @@
     
 }
 
-
+//Before segue we should prepare a little hack for our tableView:didSelectRowAtIndexPath:
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     self.detailViewController = (MSDetailViewController *)(segue.destinationViewController);
 }
 
+//Favorite button on cell clicked. Better to be in MovieCell, really.
 -(IBAction)favoriteButtonClicked:(UIButton*)sender {
     sender.selected = !sender.selected;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)[[sender superview] superview]];
@@ -158,11 +156,13 @@
         [MovieData unsaveMovie:movie];
         if (self.showFavorites) {
             [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
-                             withRowAnimation:UITableViewRowAnimationFade]; 
+                                  withRowAnimation:UITableViewRowAnimationFade]; 
         };
     }
 }
 
+
+//Toggle favorites/movies list button
 -(IBAction)toggleFavorites:(id)sender {
     self.showFavorites = ! self.showFavorites;
     if (!showFavorites) {
@@ -172,15 +172,16 @@
     } else {
         self.title = NSLocalizedString(@"Favorites", nil);
         self.favoriteButton.image = [UIImage imageNamed:@"all-movies"];
+        self.movies = [MovieData movies];
         [self.tableView reloadData];
     }
 
 }
 
+//Start load indicator and fetching of movies
 -(void) fetchMovies {
-    [self.movieList fetchTopTenBoxOfficeMovies];
-
-        [SVProgressHUD showWithStatus:NSLocalizedString(@"Loading", nil)];
+    [self.movieFetcher fetchTopTenBoxOfficeMovies];
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"Loading", nil)];
 }
 
 

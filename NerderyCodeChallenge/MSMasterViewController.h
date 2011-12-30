@@ -7,18 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MoviesList.h"
+#import "MoviesFetcher.h"
 @class MSDetailViewController;
 
-@interface MSMasterViewController : UITableViewController <MoviesListDelegate>
+@interface MSMasterViewController : UITableViewController <MoviesFetcherDelegate>
 
 @property (strong, nonatomic) MSDetailViewController *detailViewController;
-@property (strong, nonatomic) MoviesList * movieList;
--(void) moviesList:(MoviesList*) moviesList fetchedMovies:(NSArray*) movies;
--(void) moviesListFetchFailure:(MoviesList*) moviesList;
+@property (strong, nonatomic) MoviesFetcher * movieFetcher;
+@property (strong, nonatomic) NSArray* movies;
 
--(IBAction)favoriteButtonClicked:(UIButton*)sender;
+
+
+//Flag is we show saved favorites
 @property BOOL showFavorites;
+
+//Toggle favorites/top movie list button
 @property (strong, nonatomic) IBOutlet UIBarButtonItem* favoriteButton;
 -(IBAction)toggleFavorites:(id)sender;
+
+//Save/unsave button clicked
+-(IBAction)favoriteButtonClicked:(UIButton*)sender;
+
 @end

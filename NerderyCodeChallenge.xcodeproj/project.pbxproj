@@ -78,7 +78,7 @@
 		57F6262B14AA7F6E006E16A7 /* 72.png in Resources */ = {isa = PBXBuildFile; fileRef = 57F6262A14AA7F6E006E16A7 /* 72.png */; };
 		57F6262E14AA804E006E16A7 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F6262D14AA804E006E16A7 /* Movie.m */; };
 		57F6263214AA81D9006E16A7 /* RottenTomatoesAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F6263114AA81D9006E16A7 /* RottenTomatoesAPI.m */; };
-		57F6263514AA8EB0006E16A7 /* MoviesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F6263414AA8EB0006E16A7 /* MoviesList.m */; };
+		57F6263514AA8EB0006E16A7 /* MoviesFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F6263414AA8EB0006E16A7 /* MoviesFetcher.m */; };
 		57F6263914AA9948006E16A7 /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F6263814AA9948006E16A7 /* MovieCell.m */; };
 /* End PBXBuildFile section */
 
@@ -203,8 +203,8 @@
 		57F6262D14AA804E006E16A7 /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
 		57F6263014AA81D9006E16A7 /* RottenTomatoesAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RottenTomatoesAPI.h; sourceTree = "<group>"; };
 		57F6263114AA81D9006E16A7 /* RottenTomatoesAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RottenTomatoesAPI.m; sourceTree = "<group>"; };
-		57F6263314AA8EB0006E16A7 /* MoviesList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesList.h; sourceTree = "<group>"; };
-		57F6263414AA8EB0006E16A7 /* MoviesList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesList.m; sourceTree = "<group>"; };
+		57F6263314AA8EB0006E16A7 /* MoviesFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesFetcher.h; sourceTree = "<group>"; };
+		57F6263414AA8EB0006E16A7 /* MoviesFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesFetcher.m; sourceTree = "<group>"; };
 		57F6263714AA9948006E16A7 /* MovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
 		57F6263814AA9948006E16A7 /* MovieCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -422,7 +422,6 @@
 				57F6254214AA740F006E16A7 /* MSDetailViewController.h */,
 				57F6254314AA740F006E16A7 /* MSDetailViewController.m */,
 				57F6252E14AA740F006E16A7 /* Supporting Files */,
-				57B054B414AC537C00BBD722 /* MovieModel.xcdatamodeld */,
 			);
 			path = NerderyCodeChallenge;
 			sourceTree = "<group>";
@@ -430,6 +429,7 @@
 		57F6252E14AA740F006E16A7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				57B054B414AC537C00BBD722 /* MovieModel.xcdatamodeld */,
 				57F6252F14AA740F006E16A7 /* NerderyCodeChallenge-Info.plist */,
 				57F6253014AA740F006E16A7 /* InfoPlist.strings */,
 				57F6253314AA740F006E16A7 /* main.m */,
@@ -464,8 +464,8 @@
 				57F6262D14AA804E006E16A7 /* Movie.m */,
 				57F6263014AA81D9006E16A7 /* RottenTomatoesAPI.h */,
 				57F6263114AA81D9006E16A7 /* RottenTomatoesAPI.m */,
-				57F6263314AA8EB0006E16A7 /* MoviesList.h */,
-				57F6263414AA8EB0006E16A7 /* MoviesList.m */,
+				57F6263314AA8EB0006E16A7 /* MoviesFetcher.h */,
+				57F6263414AA8EB0006E16A7 /* MoviesFetcher.m */,
 				57B055E414AC55DF00BBD722 /* MovieData.h */,
 				57B055E514AC55DF00BBD722 /* MovieData.m */,
 			);
@@ -695,7 +695,7 @@
 				57F625D714AA7E11006E16A7 /* UIImageView+AFNetworking.m in Sources */,
 				57F6262E14AA804E006E16A7 /* Movie.m in Sources */,
 				57F6263214AA81D9006E16A7 /* RottenTomatoesAPI.m in Sources */,
-				57F6263514AA8EB0006E16A7 /* MoviesList.m in Sources */,
+				57F6263514AA8EB0006E16A7 /* MoviesFetcher.m in Sources */,
 				57F6263914AA9948006E16A7 /* MovieCell.m in Sources */,
 				57B054B614AC537C00BBD722 /* MovieModel.xcdatamodeld in Sources */,
 				57B0559314AC558200BBD722 /* NSAttributeDescription+MagicalDataImport.m in Sources */,

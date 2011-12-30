@@ -16,13 +16,19 @@
 @property (nonatomic, retain) NSData * poster;
 @property (nonatomic, retain) NSData * properties;
 
-
+//Contains Movie variant of current saved movies
 + (NSMutableArray*) movies;
+
+//Saves Movie as MovieData
 + (MovieData*)saveMovie:(Movie*) movie;
+
+//Deletes MovieData for Movie
 + (void)unsaveMovie:(Movie*) movie;
+
+//Returns set of saved movies' ids
 + (NSSet*) savedMoviesIds;
-+ (Movie*) savedMovieAtIndex:(NSUInteger) index;
-+ (NSUInteger) savedMoviesCount;
+
+//Returns Movie for MovieData
 - (Movie*) asMovie;
 
 @end

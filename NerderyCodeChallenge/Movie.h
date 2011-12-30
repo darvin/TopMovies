@@ -17,7 +17,11 @@ typedef enum {
 }MoviePosterSize;
 
 @interface Movie : NSObject
+
+//Real data. Holds just raw data from API respond
 @property (strong, nonatomic) NSDictionary * properties;
+
+//Below is readonly properties. It returns appropriate fields from properties dictionary
 @property (readonly) NSString* name;
 @property (readonly) NSUInteger criticsScore;
 @property (readonly) NSString* criticsFreshness;
@@ -29,8 +33,12 @@ typedef enum {
 
 @property (strong, nonatomic) UIImage* poster;
 
-
+//Returns appropriate image of MPAA rating
 -(UIImage*) ratingImage;
+
+//Properties is just raw dictionary from API respond
 -(id) initWithProperties:(NSDictionary*) properties;
+
+//Returns url for poster of this size
 -(NSURL*) urlPosterWithSize:(MoviePosterSize) size;
 @end

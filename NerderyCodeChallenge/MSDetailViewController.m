@@ -36,7 +36,7 @@
     }        
 }
 
-
+//Construct HTML for WebView with movie description. Plain and simple, actually template system can be more universal.
 - (NSString*) getHTMLMovieDescription {
     Movie * movie = (Movie*) self.detailItem;
     NSMutableString * castString = [[NSMutableString alloc] init];
@@ -44,18 +44,16 @@
     NSUInteger runtimeHours = movie.runtime/60;
     NSUInteger runtimeMinutes = movie.runtime%60;
 
-    
     NSDictionary * movieCast = movie.cast;
     for (NSString* actorName in movieCast) {
         [castString appendFormat:@"%@ as %@<br>", actorName, [movieCast objectForKey:actorName]];
     }
-    
     return  [NSString stringWithFormat:@"<b>Synopsis</b><br>%@ <br> <b>Cast</b><br> %@ <hr /> Rated %d • Freshness: %@ • Runtime: %d hr %d min", movie.synopsis, castString, movie.criticsScore, movie.criticsFreshness, runtimeHours, runtimeMinutes];
 }
 
 - (void) webViewDidFinishLoad: (UIWebView *)sender {
     [self.movieDescription sizeToFit];
-    
+    //resize WebView to fit content
     self.scrollView.contentSize = CGSizeMake(self.movieDescription.frame.size.width, self.movieDescription.frame.origin.y+self.movieDescription.frame.size.height);
 }
 
@@ -65,11 +63,13 @@
         Movie * movie = (Movie*) self.detailItem;
         self.title = movie.name;
         if (!movie.poster) {
+            //loading from URL
             [self.moviePoster setImageWithURL: [movie urlPosterWithSize:MoviePosterSizeOriginal]];
         } else {
+            //loading from saved data
             [self.moviePoster setImage:movie.poster];
         }
-        
+        //loading html to UIWebView
         [self.movieDescription loadHTMLString:[self getHTMLMovieDescription] baseURL:nil];
     }
 }
@@ -146,15 +146,11 @@
 
 -(IBAction)tweet:(id)sender {
     Movie * movie = (Movie*) self.detailItem;
-
-    // Create the view controller
+    //Just simple API use
     TWTweetComposeViewController *twitter = [[TWTweetComposeViewController alloc] init];
     
-    // Optional: set an image, url and initial text
     [twitter addURL:movie.fullURL];
     [twitter setInitialText:[NSString stringWithFormat: @"I like %@", movie.name]];
-    
-    // Show the controller
     [self presentModalViewController:twitter animated:YES];
     
 }

@@ -6,13 +6,13 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "MoviesList.h"
+#import "MoviesFetcher.h"
 #import "Movie.h"
 #import "AFNetworking.h"
 #import "RottenTomatoesAPI.h"
 #import "MovieData.h"
 
-@implementation MoviesList
+@implementation MoviesFetcher
 @synthesize delegate, fetchedMovies;
 -(id)init {
     if (self = [super init]) {
@@ -33,10 +33,10 @@
                         [result addObject:[[Movie alloc] initWithProperties:movieProperties]];
                 };
                 self.fetchedMovies = [NSArray arrayWithArray:result];
-                [self.delegate moviesList:self fetchedMovies: self.fetchedMovies];
+                [self.delegate moviesFetcher:self fetchedMovies: self.fetchedMovies];
                 
             }     failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                [self.delegate moviesListFetchFailure:self];
+                [self.delegate moviesFetcherFetchFailure:self];
             }];
     
     [queue addOperation:operation];
