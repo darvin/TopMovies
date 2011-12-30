@@ -31,6 +31,9 @@
 		57B055A014AC558200BBD722 /* MRCoreDataAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B0550A14AC558100BBD722 /* MRCoreDataAction.m */; };
 		57B055E614AC55DF00BBD722 /* MovieData.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B055E514AC55DF00BBD722 /* MovieData.m */; };
 		57C9A89C14AD414D0051C3E8 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57C9A89B14AD414D0051C3E8 /* Twitter.framework */; };
+		57C9A8F214AD53EC0051C3E8 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 57C9A8E014AD53EC0051C3E8 /* SVProgressHUD.bundle */; };
+		57C9A8F314AD53EC0051C3E8 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C9A8E214AD53EC0051C3E8 /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		57C9A8F914AD54240051C3E8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57C9A8F814AD54240051C3E8 /* QuartzCore.framework */; };
 		57F6252814AA740F006E16A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F6252714AA740F006E16A7 /* UIKit.framework */; };
 		57F6252A14AA740F006E16A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F6252914AA740F006E16A7 /* Foundation.framework */; };
 		57F6252C14AA740F006E16A7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F6252B14AA740F006E16A7 /* CoreGraphics.framework */; };
@@ -129,6 +132,10 @@
 		57B055E414AC55DF00BBD722 /* MovieData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieData.h; sourceTree = "<group>"; };
 		57B055E514AC55DF00BBD722 /* MovieData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieData.m; sourceTree = "<group>"; };
 		57C9A89B14AD414D0051C3E8 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		57C9A8E014AD53EC0051C3E8 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		57C9A8E114AD53EC0051C3E8 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		57C9A8E214AD53EC0051C3E8 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		57C9A8F814AD54240051C3E8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		57F6252314AA740F006E16A7 /* NerderyCodeChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NerderyCodeChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F6252714AA740F006E16A7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		57F6252914AA740F006E16A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -203,6 +210,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57C9A8F914AD54240051C3E8 /* QuartzCore.framework in Frameworks */,
 				57C9A89C14AD414D0051C3E8 /* Twitter.framework in Frameworks */,
 				5781E8D114ACDB9A0023F62B /* CoreData.framework in Frameworks */,
 				57F6252814AA740F006E16A7 /* UIKit.framework in Frameworks */,
@@ -305,6 +313,24 @@
 			path = DataImport;
 			sourceTree = "<group>";
 		};
+		57C9A8CB14AD53EC0051C3E8 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				57C9A8DF14AD53EC0051C3E8 /* SVProgressHUD */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		57C9A8DF14AD53EC0051C3E8 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				57C9A8E014AD53EC0051C3E8 /* SVProgressHUD.bundle */,
+				57C9A8E114AD53EC0051C3E8 /* SVProgressHUD.h */,
+				57C9A8E214AD53EC0051C3E8 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		57F6251814AA740F006E16A7 = {
 			isa = PBXGroup;
 			children = (
@@ -332,6 +358,7 @@
 		57F6252614AA740F006E16A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				57C9A8F814AD54240051C3E8 /* QuartzCore.framework */,
 				57C9A89B14AD414D0051C3E8 /* Twitter.framework */,
 				5781E8D014ACDB9A0023F62B /* CoreData.framework */,
 				57F6252714AA740F006E16A7 /* UIKit.framework */,
@@ -409,6 +436,7 @@
 		57F6256714AA7E11006E16A7 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				57C9A8CB14AD53EC0051C3E8 /* SVProgressHUD */,
 				57B054B714AC558100BBD722 /* MagicalRecord */,
 				57F6256814AA7E11006E16A7 /* AFNetworking */,
 			);
@@ -608,6 +636,7 @@
 				57B054B214AC4F0700BBD722 /* star@2x.png in Resources */,
 				5781E8DB14AD3A650023F62B /* list.png in Resources */,
 				5781E8DC14AD3A650023F62B /* list@2x.png in Resources */,
+				57C9A8F214AD53EC0051C3E8 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,6 +705,7 @@
 				57B0559F14AC558200BBD722 /* MagicalRecordHelpers.m in Sources */,
 				57B055A014AC558200BBD722 /* MRCoreDataAction.m in Sources */,
 				57B055E614AC55DF00BBD722 /* MovieData.m in Sources */,
+				57C9A8F314AD53EC0051C3E8 /* SVProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

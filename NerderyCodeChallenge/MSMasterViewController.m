@@ -14,9 +14,11 @@
 #import "MovieCell.h"
 #import "MovieData.h"
 
+#import "SVProgressHUD.h"
+
 @interface MSMasterViewController()
 -(Movie*) movieByIndexPath:(NSIndexPath*) indexPath;
-
+-(void) fetchMovies;
 @end
 
 @implementation MSMasterViewController
@@ -52,7 +54,7 @@
     
     self.movieList = [[MoviesList alloc] init];
     self.movieList.delegate = self;
-    [self.movieList fetchTopTenBoxOfficeMovies];
+    [self fetchMovies];
 
 
 
@@ -128,6 +130,8 @@
 
 -(void) moviesList:(MoviesList*) moviesList fetchedMovies:(NSArray*) movies {
     [self.tableView reloadData];
+    [SVProgressHUD dismissWithSuccess:NSLocalizedString(@"Done", nil)];
+
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         NSIndexPath * firstRow = [NSIndexPath indexPathForRow:0 inSection:0];
         [self.tableView selectRowAtIndexPath: firstRow animated:NO scrollPosition:UITableViewScrollPositionMiddle];
@@ -136,7 +140,10 @@
 
 }
 -(void) moviesListFetchFailure:(MoviesList*) moviesList {
+
     [self toggleFavorites:self];
+    [SVProgressHUD dismissWithError:NSLocalizedString(@"Offline", nil)];
+
 }
 
 
@@ -171,13 +178,18 @@
     if (!showFavorites) {
         self.title = NSLocalizedString(@"Movies", nil);
         self.favoriteButton.image = [UIImage imageNamed:@"star"];
-        [self.movieList fetchTopTenBoxOfficeMovies];
+        [self fetchMovies];
     } else {
         self.title = NSLocalizedString(@"Favorites", nil);
         self.favoriteButton.image = [UIImage imageNamed:@"list"];
         [self.tableView reloadData];
     }
 
+}
+
+-(void) fetchMovies {
+    [self.movieList fetchTopTenBoxOfficeMovies];
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"Loading", nil)];
 }
 
 @end

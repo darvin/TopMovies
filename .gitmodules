@@ -4,3 +4,6 @@
 [submodule "libs/MagicalRecord"]
 	path = libs/MagicalRecord
 	url = git://github.com/magicalpanda/MagicalRecord.git
+[submodule "libs/SVProgressHUD"]
+	path = libs/SVProgressHUD
+	url = git://github.com/samvermette/SVProgressHUD.git
