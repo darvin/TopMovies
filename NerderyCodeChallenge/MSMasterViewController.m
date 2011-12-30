@@ -134,7 +134,6 @@
 
 //Setting current movie as detailItem of detailViewController 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"%@", self.detailViewController);
     Movie* movie = [self movieByIndexPath:indexPath];
     self.detailViewController.detailItem = movie;
     

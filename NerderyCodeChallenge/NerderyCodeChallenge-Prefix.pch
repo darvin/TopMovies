@@ -15,5 +15,7 @@
     #define HC_SHORTHAND
     #import <CoreData/CoreData.h>
     #import "CoreData+MagicalRecord.h"
+
+    #import "SVProgressHUD.h"
 #endif
 

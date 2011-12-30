@@ -52,8 +52,10 @@
     NSMutableDictionary * result = [[NSMutableDictionary alloc] init];
     for (NSDictionary * actorAndRole in [self.properties objectForKey:@"abridged_cast"]) {
         NSArray * characters = [actorAndRole objectForKey:@"characters"];
+        if ([characters objectAtIndex:0]&&[actorAndRole objectForKey:@"name"]) {
+            [result setObject: [characters objectAtIndex:0] forKey: [actorAndRole objectForKey:@"name"]];
+        }
         
-        [result setObject: [characters objectAtIndex:0] forKey: [actorAndRole objectForKey:@"name"]];
     }
     return [NSDictionary dictionaryWithDictionary:result];
 }

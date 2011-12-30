@@ -8,9 +8,10 @@
 
 #import "MovieData.h"
 #import "AFNetworking.h"
-@interface MovieData()
--(void) loadPoster:(NSURL*) url;
 
+@interface MovieData()
+- (void) loadPoster:(NSURL*) url;
+- (NSOperationQueue*) sharedQueue;
 @end
 
 @implementation MovieData
@@ -34,6 +35,18 @@
             }
         }
         return movies;
+    }
+}
+
+- (NSOperationQueue*) sharedQueue  {
+    static NSOperationQueue *queue;
+    
+    @synchronized(self)
+    {
+        if (!queue) {
+            queue = [[NSOperationQueue alloc] init];
+        }
+        return queue;
     }
 }
 
@@ -89,10 +102,10 @@
 
 -(void) loadPoster:(NSURL*) url {
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:request imageProcessingBlock: ^(UIImage* image) {return image;} cacheName:@"justname" success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-        self.poster = UIImagePNGRepresentation(image);
-    } failure:nil];
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [queue addOperation:operation];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess: ^(AFHTTPRequestOperation *operation, id responseObject) {
+        self.poster = (NSData*) responseObject;
+    } failure:nil];  
+    [[self sharedQueue] addOperation:operation];
 }
 @end
