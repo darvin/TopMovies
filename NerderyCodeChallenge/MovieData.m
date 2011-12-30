@@ -79,10 +79,13 @@
     MovieData* movieData = [self MR_findFirstByAttribute:@"id" withValue:movie.rottenId];
     [movieData.managedObjectContext deleteObject:movieData];
     NSMutableArray *movies = [self movies];
+    NSLog(@"%d", [movies count]);
     for (int i=0; i<[movies count]; i++) {
         if ([[movies objectAtIndex:i] isEqual:movie]) 
             [movies removeObjectAtIndex:i];
     }
+    NSLog(@"%d", [movies count]);
+
 }
 
 + (NSSet*) savedMoviesIds {

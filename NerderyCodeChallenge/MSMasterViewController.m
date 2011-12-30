@@ -169,4 +169,16 @@
 
 
 
+-(IBAction)favoriteButtonClicked:(UIButton*)sender {
+    UITableViewCell * cell = (UITableViewCell *)[[sender superview] superview];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    Movie* movie = [self movieByIndexPath:indexPath];
+    if ([MovieData toggleSavedMovie:movie]) {
+        if (self.showFavorites) {
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
+                                  withRowAnimation:UITableViewRowAnimationFade]; 
+        };
+        [cell setNeedsDisplay];
+    }
+}
 @end

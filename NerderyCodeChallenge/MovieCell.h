@@ -24,8 +24,8 @@
 @property (strong, nonatomic) IBOutlet UIProgressView * score;
 @property (strong, nonatomic) Movie * movie;
 
-//Save/unsave button clicked
--(IBAction)favoriteButtonClicked:(UIButton*)sender;
+
+
 
 
 @end

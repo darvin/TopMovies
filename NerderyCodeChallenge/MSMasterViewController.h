@@ -29,4 +29,7 @@
 -(IBAction)toggleFavorites:(id)sender;
 
 
+//Save/unsave button clicked
+-(IBAction)favoriteButtonClicked:(UIButton*)sender;
+
 @end

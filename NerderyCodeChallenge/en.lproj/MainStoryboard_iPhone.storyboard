@@ -67,7 +67,7 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="favoriteButtonClicked:" destination="R9b-Gp-m2q" eventType="touchUpInside" id="8O2-WC-jhG"/>
+                                                <action selector="favoriteButtonClicked:" destination="12" eventType="touchUpInside" id="9Lr-nY-6cY"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -152,6 +152,35 @@
         <image name="star-inactive.png" width="26" height="26"/>
         <image name="star.png" width="26" height="26"/>
     </resources>
+    <classes>
+        <class className="MSDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="tweet:"/>
+                <relationship kind="outlet" name="movieDescription" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="moviePoster" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="MSMasterViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSMasterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="favoriteButtonClicked:" candidateClass="UIButton"/>
+                <relationship kind="action" name="toggleFavorites:"/>
+                <relationship kind="outlet" name="favoriteButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="MovieCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MovieCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="favorite" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="name" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="poster" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="rating" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="score" candidateClass="UIProgressView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

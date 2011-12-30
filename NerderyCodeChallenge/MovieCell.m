@@ -50,10 +50,6 @@
 }
 
 
--(IBAction)favoriteButtonClicked:(UIButton*)sender {
-    if ([MovieData toggleSavedMovie:self.movie])
-        [self setNeedsDisplay]; // repaint
-}
 
 
 -(void) drawRect:(CGRect)rect {
