@@ -8,6 +8,7 @@
 
 #import "MSDetailViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "Twitter/Twitter.h"
 
 @interface MSDetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -141,6 +142,21 @@
     // Called when the view is shown again in the split view, invalidating the button and popover controller.
     [self.navigationItem setLeftBarButtonItem:nil animated:YES];
     self.masterPopoverController = nil;
+}
+
+-(IBAction)tweet:(id)sender {
+    Movie * movie = (Movie*) self.detailItem;
+
+    // Create the view controller
+    TWTweetComposeViewController *twitter = [[TWTweetComposeViewController alloc] init];
+    
+    // Optional: set an image, url and initial text
+    [twitter addURL:movie.fullURL];
+    [twitter setInitialText:[NSString stringWithFormat: @"I like %@", movie.name]];
+    
+    // Show the controller
+    [self presentModalViewController:twitter animated:YES];
+    
 }
 
 @end

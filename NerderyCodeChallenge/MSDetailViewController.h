@@ -20,4 +20,7 @@
 
 @property (strong, nonatomic) IBOutlet UIScrollView * scrollView;
 
+
+-(IBAction)tweet:(id)sender;
+
 @end

@@ -30,6 +30,7 @@
 		57B0559F14AC558200BBD722 /* MagicalRecordHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B0550714AC558100BBD722 /* MagicalRecordHelpers.m */; };
 		57B055A014AC558200BBD722 /* MRCoreDataAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B0550A14AC558100BBD722 /* MRCoreDataAction.m */; };
 		57B055E614AC55DF00BBD722 /* MovieData.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B055E514AC55DF00BBD722 /* MovieData.m */; };
+		57C9A89C14AD414D0051C3E8 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57C9A89B14AD414D0051C3E8 /* Twitter.framework */; };
 		57F6252814AA740F006E16A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F6252714AA740F006E16A7 /* UIKit.framework */; };
 		57F6252A14AA740F006E16A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F6252914AA740F006E16A7 /* Foundation.framework */; };
 		57F6252C14AA740F006E16A7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F6252B14AA740F006E16A7 /* CoreGraphics.framework */; };
@@ -127,6 +128,7 @@
 		57B0550A14AC558100BBD722 /* MRCoreDataAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRCoreDataAction.m; sourceTree = "<group>"; };
 		57B055E414AC55DF00BBD722 /* MovieData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieData.h; sourceTree = "<group>"; };
 		57B055E514AC55DF00BBD722 /* MovieData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieData.m; sourceTree = "<group>"; };
+		57C9A89B14AD414D0051C3E8 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		57F6252314AA740F006E16A7 /* NerderyCodeChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NerderyCodeChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F6252714AA740F006E16A7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		57F6252914AA740F006E16A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -201,6 +203,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57C9A89C14AD414D0051C3E8 /* Twitter.framework in Frameworks */,
 				5781E8D114ACDB9A0023F62B /* CoreData.framework in Frameworks */,
 				57F6252814AA740F006E16A7 /* UIKit.framework in Frameworks */,
 				57F6252A14AA740F006E16A7 /* Foundation.framework in Frameworks */,
@@ -305,7 +308,6 @@
 		57F6251814AA740F006E16A7 = {
 			isa = PBXGroup;
 			children = (
-				5781E8D014ACDB9A0023F62B /* CoreData.framework */,
 				57F6262A14AA7F6E006E16A7 /* 72.png */,
 				57F6262814AA7EE2006E16A7 /* 114.png */,
 				57F6262614AA7EDA006E16A7 /* 57.png */,
@@ -330,6 +332,8 @@
 		57F6252614AA740F006E16A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				57C9A89B14AD414D0051C3E8 /* Twitter.framework */,
+				5781E8D014ACDB9A0023F62B /* CoreData.framework */,
 				57F6252714AA740F006E16A7 /* UIKit.framework */,
 				57F6252914AA740F006E16A7 /* Foundation.framework */,
 				57F6252B14AA740F006E16A7 /* CoreGraphics.framework */,

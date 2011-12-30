@@ -25,6 +25,7 @@ typedef enum {
 @property (readonly) NSUInteger runtime;
 @property (readonly) NSDictionary* cast;
 @property (readonly) NSString* rottenId;
+@property (readonly) NSURL* fullURL;
 
 
 -(UIImage*) ratingImage;

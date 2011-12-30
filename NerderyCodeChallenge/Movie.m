@@ -40,6 +40,10 @@
     return [[[self.properties objectForKey:@"ratings"] objectForKey:@"critics_score"] intValue];
 }
 
+-(NSURL*) fullURL {
+    return [NSURL URLWithString:[[self.properties objectForKey:@"links"] objectForKey:@"alternate"]];
+}
+
 -(NSString*) criticsFreshness {
     return [[self.properties objectForKey:@"ratings"] objectForKey:@"critics_rating"];
 }

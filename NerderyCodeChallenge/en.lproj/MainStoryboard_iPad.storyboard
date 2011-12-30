@@ -24,7 +24,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="" title="Detail" id="4" customClass="MSDetailViewController" sceneMemberID="viewController">
                     <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" id="21A-BE-yih">
-                        <rect key="frame" x="0.0" y="64" width="703" height="704"/>
+                        <rect key="frame" x="0.0" y="64" width="703" height="660"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="JVj-zO-mFC">
@@ -45,7 +45,14 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </scrollView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Detail" id="52"/>
+                    <navigationItem key="navigationItem" title="Detail" id="52">
+                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="TKt-8W-Fky">
+                            <connections>
+                                <action selector="tweet:" destination="4" id="MfL-qV-cXS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="movieDescription" destination="2sX-cW-w7B" id="H4c-Se-km7"/>
                         <outlet property="moviePoster" destination="JVj-zO-mFC" id="jMz-xm-9yA"/>

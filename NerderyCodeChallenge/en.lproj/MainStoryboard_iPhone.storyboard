@@ -131,7 +131,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </scrollView>
                     <navigationItem key="navigationItem" title="Movie" id="26">
-                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="2qE-2L-exB"/>
+                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="2qE-2L-exB">
+                            <connections>
+                                <action selector="tweet:" destination="21" id="wdr-zP-MbM"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="movieDescription" destination="oZJ-vX-LqW" id="KuH-fD-14n"/>
