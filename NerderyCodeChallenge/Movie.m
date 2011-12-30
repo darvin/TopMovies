@@ -11,7 +11,7 @@
 #import "RottenTomatoesAPI.h"
 
 @implementation Movie
-@synthesize properties = _properties;
+@synthesize properties = _properties, poster=_poster;
 
 -(id) initWithProperties:(NSDictionary*) properties; {
     if (self = [super init]) {

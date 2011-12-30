@@ -27,6 +27,8 @@ typedef enum {
 @property (readonly) NSString* rottenId;
 @property (readonly) NSURL* fullURL;
 
+@property (strong, nonatomic) UIImage* poster;
+
 
 -(UIImage*) ratingImage;
 -(id) initWithProperties:(NSDictionary*) properties;

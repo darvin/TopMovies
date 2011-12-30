@@ -12,9 +12,10 @@
 #define RIGHT_MARGIN 28
 #define GAP_BETWEEN_TITLE_AND_RATING 5
 
+
+//Custom UITableViewCell
+
 @interface MovieCell : UITableViewCell
-
-
 
 @property (strong, nonatomic) IBOutlet UILabel * name;
 @property (strong, nonatomic) IBOutlet UIImageView * poster;

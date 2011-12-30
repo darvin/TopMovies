@@ -67,7 +67,9 @@
     NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:self.properties];
     NSDictionary *properties = [unarchiver decodeObject];
     [unarchiver finishDecoding];    
-    return [[Movie alloc] initWithProperties:properties];
+    Movie* movie = [[Movie alloc] initWithProperties:properties];
+    movie.poster = [[UIImage alloc] initWithData:self.poster];
+    return movie;
 }
 
 -(void) loadPoster:(NSURL*) url {

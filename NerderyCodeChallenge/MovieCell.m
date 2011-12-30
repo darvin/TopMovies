@@ -20,7 +20,10 @@
     self.name.text = movie.name;
     [self.rating setImage:[movie ratingImage]];
     self.score.progress = movie.criticsScore/100.0;
-    [self.poster setImageWithURL:[self.movie urlPosterWithSize:MoviePosterSizeThumbnail]];
+    if (!self.movie.poster)
+        [self.poster setImageWithURL:[self.movie urlPosterWithSize:MoviePosterSizeThumbnail]];
+    else
+        [self.poster setImage:self.movie.poster];
 }
 
 
@@ -45,11 +48,5 @@
     self.rating.frame = CGRectMake(ratingX, self.rating.frame.origin.y, ratingWidth, self.rating.frame.size.height);
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
 
 @end

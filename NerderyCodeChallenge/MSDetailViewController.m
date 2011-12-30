@@ -68,7 +68,11 @@
     if (self.detailItem) {
         Movie * movie = (Movie*) self.detailItem;
         self.title = movie.name;
-        [self.moviePoster setImageWithURL: [movie urlPosterWithSize:MoviePosterSizeOriginal]];
+        if (!movie.poster) {
+            [self.moviePoster setImageWithURL: [movie urlPosterWithSize:MoviePosterSizeOriginal]];
+        } else {
+            [self.moviePoster setImage:movie.poster];
+        }
         
         [self.movieDescription loadHTMLString:[self getHTMLMovieDescription] baseURL:nil];
     }
