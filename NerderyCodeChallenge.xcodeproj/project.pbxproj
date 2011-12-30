@@ -151,7 +151,7 @@
 		57C9A91414AD7F510051C3E8 /* all-movies@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "all-movies@2x.png"; sourceTree = "<group>"; };
 		57C9A91514AD7F510051C3E8 /* favorites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorites.png; sourceTree = "<group>"; };
 		57C9A91614AD7F510051C3E8 /* favorites@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorites@2x.png"; sourceTree = "<group>"; };
-		57C9A92A14AD8B070051C3E8 /* 512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 512.png; path = Resources/Icons/512.png; sourceTree = "<group>"; };
+		57C9A92A14AD8B070051C3E8 /* 512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 512.png; path = Icons/512.png; sourceTree = "<group>"; };
 		57F6252314AA740F006E16A7 /* NerderyCodeChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NerderyCodeChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F6252714AA740F006E16A7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		57F6252914AA740F006E16A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -196,9 +196,9 @@
 		57F6257D14AA7E11006E16A7 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		57F6257E14AA7E11006E16A7 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		57F6257F14AA7E11006E16A7 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		57F6262614AA7EDA006E16A7 /* 57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 57.png; sourceTree = "<group>"; };
-		57F6262814AA7EE2006E16A7 /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114.png; sourceTree = "<group>"; };
-		57F6262A14AA7F6E006E16A7 /* 72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 72.png; sourceTree = "<group>"; };
+		57F6262614AA7EDA006E16A7 /* 57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 57.png; path = ../57.png; sourceTree = "<group>"; };
+		57F6262814AA7EE2006E16A7 /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 114.png; path = ../114.png; sourceTree = "<group>"; };
+		57F6262A14AA7F6E006E16A7 /* 72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 72.png; path = ../72.png; sourceTree = "<group>"; };
 		57F6262C14AA804E006E16A7 /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
 		57F6262D14AA804E006E16A7 /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
 		57F6263014AA81D9006E16A7 /* RottenTomatoesAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RottenTomatoesAPI.h; sourceTree = "<group>"; };
@@ -369,13 +369,31 @@
 			path = TollbarButtons;
 			sourceTree = "<group>";
 		};
-		57F6251814AA740F006E16A7 = {
+		57C9A92C14AD95880051C3E8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				57F6253F14AA740F006E16A7 /* MSMasterViewController.h */,
+				57F6254014AA740F006E16A7 /* MSMasterViewController.m */,
+				57F6254214AA740F006E16A7 /* MSDetailViewController.h */,
+				57F6254314AA740F006E16A7 /* MSDetailViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		57C9A92D14AD95A70051C3E8 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
 				57C9A92A14AD8B070051C3E8 /* 512.png */,
 				57F6262A14AA7F6E006E16A7 /* 72.png */,
 				57F6262814AA7EE2006E16A7 /* 114.png */,
 				57F6262614AA7EDA006E16A7 /* 57.png */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
+		57F6251814AA740F006E16A7 = {
+			isa = PBXGroup;
+			children = (
 				57F625FC14AA7E98006E16A7 /* Resources */,
 				57F6252D14AA740F006E16A7 /* NerderyCodeChallenge */,
 				57F6255114AA740F006E16A7 /* NerderyCodeChallengeTests */,
@@ -411,16 +429,9 @@
 		57F6252D14AA740F006E16A7 /* NerderyCodeChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				57C9A92C14AD95880051C3E8 /* Controller */,
 				57F6263614AA991D006E16A7 /* View */,
 				57F6256214AA7AA9006E16A7 /* Model */,
-				57F6253614AA740F006E16A7 /* MSAppDelegate.h */,
-				57F6253714AA740F006E16A7 /* MSAppDelegate.m */,
-				57F6253914AA740F006E16A7 /* MainStoryboard_iPhone.storyboard */,
-				57F6253C14AA740F006E16A7 /* MainStoryboard_iPad.storyboard */,
-				57F6253F14AA740F006E16A7 /* MSMasterViewController.h */,
-				57F6254014AA740F006E16A7 /* MSMasterViewController.m */,
-				57F6254214AA740F006E16A7 /* MSDetailViewController.h */,
-				57F6254314AA740F006E16A7 /* MSDetailViewController.m */,
 				57F6252E14AA740F006E16A7 /* Supporting Files */,
 			);
 			path = NerderyCodeChallenge;
@@ -429,6 +440,8 @@
 		57F6252E14AA740F006E16A7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				57F6253614AA740F006E16A7 /* MSAppDelegate.h */,
+				57F6253714AA740F006E16A7 /* MSAppDelegate.m */,
 				57B054B414AC537C00BBD722 /* MovieModel.xcdatamodeld */,
 				57F6252F14AA740F006E16A7 /* NerderyCodeChallenge-Info.plist */,
 				57F6253014AA740F006E16A7 /* InfoPlist.strings */,
@@ -522,6 +535,7 @@
 		57F625FC14AA7E98006E16A7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				57C9A92D14AD95A70051C3E8 /* Icons */,
 				57F625FD14AA7E98006E16A7 /* Graphics */,
 			);
 			path = Resources;
@@ -542,6 +556,8 @@
 		57F6263614AA991D006E16A7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				57F6253914AA740F006E16A7 /* MainStoryboard_iPhone.storyboard */,
+				57F6253C14AA740F006E16A7 /* MainStoryboard_iPad.storyboard */,
 				57F6263714AA9948006E16A7 /* MovieCell.h */,
 				57F6263814AA9948006E16A7 /* MovieCell.m */,
 			);
