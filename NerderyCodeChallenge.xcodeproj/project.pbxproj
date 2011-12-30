@@ -152,6 +152,7 @@
 		57C9A91514AD7F510051C3E8 /* favorites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorites.png; sourceTree = "<group>"; };
 		57C9A91614AD7F510051C3E8 /* favorites@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorites@2x.png"; sourceTree = "<group>"; };
 		57C9A92A14AD8B070051C3E8 /* 512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 512.png; path = Icons/512.png; sourceTree = "<group>"; };
+		57C9A92E14AD99F30051C3E8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		57F6252314AA740F006E16A7 /* NerderyCodeChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NerderyCodeChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F6252714AA740F006E16A7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		57F6252914AA740F006E16A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -394,6 +395,7 @@
 		57F6251814AA740F006E16A7 = {
 			isa = PBXGroup;
 			children = (
+				57C9A92E14AD99F30051C3E8 /* README.md */,
 				57F625FC14AA7E98006E16A7 /* Resources */,
 				57F6252D14AA740F006E16A7 /* NerderyCodeChallenge */,
 				57F6255114AA740F006E16A7 /* NerderyCodeChallengeTests */,
