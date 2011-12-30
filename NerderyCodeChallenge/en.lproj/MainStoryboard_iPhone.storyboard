@@ -75,6 +75,7 @@
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
+                                    <outlet property="favorite" destination="bYq-rN-Sk5" id="S6E-Hf-Rul"/>
                                     <outlet property="name" destination="pS0-RH-L6s" id="EL5-GZ-A4y"/>
                                     <outlet property="poster" destination="UjR-TN-lFf" id="05q-5K-VoY"/>
                                     <outlet property="rating" destination="4AG-Qk-AAF" id="kZe-7D-ovK"/>
@@ -98,6 +99,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="favoriteButton" destination="tYQ-i9-WDa" id="jHn-7y-F7p"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="455" y="64"/>

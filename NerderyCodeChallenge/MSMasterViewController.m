@@ -23,7 +23,7 @@
 
 @synthesize detailViewController = _detailViewController;
 @synthesize movieList;
-@synthesize showFavorites;
+@synthesize showFavorites, favoriteButton;
 
 - (void)awakeFromNib
 {
@@ -101,7 +101,7 @@
     if (!self.showFavorites)
         return [self.movieList.fetchedMovies objectAtIndex:indexPath.row];
     else
-        return 
+        return [MovieData savedMovieAtIndex:indexPath.row];
 }
 
 
@@ -109,12 +109,17 @@
     MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
 
     cell.movie = [self movieByIndexPath:indexPath];
-    
+    if (self.showFavorites) {
+        cell.favorite.selected = YES;
+    }
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.movieList.fetchedMovies count];
+    if (!self.showFavorites)
+        return [self.movieList.fetchedMovies count];
+    else
+        return [MovieData savedMoviesCount];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -131,8 +136,7 @@
 
 }
 -(void) moviesListFetchFailure:(MoviesList*) moviesList {
-    //show error message;
-    NSLog(@"failure");
+    [self toggleFavorites:self];
 }
 
 
@@ -155,12 +159,24 @@
         [MovieData saveMovie:movie];
     } else {
         [MovieData unsaveMovie:movie];
+        if (self.showFavorites) {
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
+                             withRowAnimation:UITableViewRowAnimationFade]; 
+        };
     }
 }
 
 -(IBAction)toggleFavorites:(id)sender {
     self.showFavorites = ! self.showFavorites;
-    [self.tableView reloadData];
+    if (!showFavorites) {
+        self.title = NSLocalizedString(@"Movies", nil);
+        self.favoriteButton.image = [UIImage imageNamed:@"star"];
+        [self.movieList fetchTopTenBoxOfficeMovies];
+    } else {
+        self.title = NSLocalizedString(@"Favorites", nil);
+        self.favoriteButton.image = [UIImage imageNamed:@"list"];
+        [self.tableView reloadData];
+    }
 
 }
 

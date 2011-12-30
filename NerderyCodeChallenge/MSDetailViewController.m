@@ -17,7 +17,6 @@
 @implementation MSDetailViewController
 
 @synthesize detailItem = _detailItem;
-@synthesize detailDescriptionLabel = _detailDescriptionLabel;
 @synthesize masterPopoverController = _masterPopoverController;
 @synthesize moviePoster = _moviePoster, movieDescription = _movieDescription, scrollView=_scrollView;
 #pragma mark - Managing the detail item

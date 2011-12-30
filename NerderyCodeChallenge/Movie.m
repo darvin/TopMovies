@@ -24,6 +24,10 @@
     return [self.properties objectForKey:@"title"];
 }
 
+-(NSString*) rottenId {
+    return [self.properties objectForKey:@"id"];
+}
+
 -(NSString*) synopsis {
     return [self.properties objectForKey:@"synopsis"];
 }

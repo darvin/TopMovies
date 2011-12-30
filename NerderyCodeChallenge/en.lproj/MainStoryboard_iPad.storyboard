@@ -127,6 +127,7 @@
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
+                                    <outlet property="favorite" destination="Zc7-T0-IrO" id="nLc-Tl-cAV"/>
                                     <outlet property="name" destination="Jss-Ev-X9u" id="DVc-Pp-ryR"/>
                                     <outlet property="poster" destination="yhH-fH-iUo" id="oLR-lg-1zH"/>
                                     <outlet property="rating" destination="W7q-aQ-MZj" id="mSp-Rr-xIj"/>
@@ -147,6 +148,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="favoriteButton" destination="LiN-Oh-42p" id="yT2-2F-89A"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="843" y="-179"/>

@@ -8,7 +8,6 @@
 
 #import "MovieData.h"
 #import "AFNetworking.h"
-#import "ActorData.h"
 @interface MovieData()
 -(void) loadPoster:(NSURL*) url;
 
@@ -16,44 +15,39 @@
 
 @implementation MovieData
 
-@dynamic name;
-@dynamic criticsScore;
-@dynamic criticsFreshness;
-@dynamic synopsis;
-@dynamic runtime;
+@dynamic id;
+@dynamic properties;
 @dynamic poster;
-@dynamic characters;
-@dynamic actors;
 
 + (MovieData*)saveMovie:(Movie*) movie {
-    MovieData* newMovie = [self MR_findFirstByAttribute:@"name" withValue:movie.name];
+    MovieData* newMovie = [self MR_findFirstByAttribute:@"id" withValue:movie.rottenId];
     if (!newMovie) {
         newMovie = [self MR_createEntity];
-        newMovie.name = movie.name;
-        newMovie.synopsis = movie.synopsis;
-        newMovie.runtime = [NSNumber numberWithInt: movie.runtime];
-        newMovie.criticsScore = [NSNumber numberWithInt:movie.criticsScore];
-        newMovie.criticsFreshness = movie.criticsFreshness;
+        newMovie.id = movie.rottenId;
+        
+        NSMutableData *data = [[NSMutableData alloc] init];
+        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+        [archiver encodeObject:movie.properties];
+        [archiver finishEncoding];
+        newMovie.properties = data;
+        
         [newMovie loadPoster:[movie urlPosterWithSize:MoviePosterSizeOriginal]];
         
         
-        NSDictionary * cast = movie.cast;
-        for (NSString* actor in cast) {
-            [newMovie addActorsObject:  [ActorData saveActorNamed:actor PlayedCharacterNamed:[cast objectForKey:actor] inMovie:newMovie]];
-        }
+        
     }
     return newMovie;
 }
 + (void)unsaveMovie:(Movie*) movie {
-    MovieData* movieData = [self MR_findFirstByAttribute:@"name" withValue:movie.name];
+    MovieData* movieData = [self MR_findFirstByAttribute:@"id" withValue:movie.rottenId];
     [movieData.managedObjectContext deleteObject:movieData];
 }
 
-+ (NSSet*) savedMoviesNames {
++ (NSSet*) savedMoviesIds {
     NSArray *movies = [self MR_findAll];
     NSMutableSet* result = [[NSMutableSet alloc] initWithCapacity:[movies count]];
     for (MovieData* movie in movies) {
-        [result addObject:movie.name];
+        [result addObject:movie.id];
     }
 
     return result;
@@ -65,10 +59,15 @@
     return [[movies objectAtIndex:index] asMovie];
 }
 
++(NSUInteger) savedMoviesCount {
+    return [[self MR_numberOfEntities] intValue];
+}
 
 -(Movie*) asMovie {
-    
-    return [[Movie alloc] initWithMovieData:self];
+    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:self.properties];
+    NSDictionary *properties = [unarchiver decodeObject];
+    [unarchiver finishDecoding];    
+    return [[Movie alloc] initWithProperties:properties];
 }
 
 -(void) loadPoster:(NSURL*) url {

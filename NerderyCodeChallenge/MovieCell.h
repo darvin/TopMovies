@@ -19,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UILabel * name;
 @property (strong, nonatomic) IBOutlet UIImageView * poster;
 @property (strong, nonatomic) IBOutlet UIImageView * rating;
+@property (strong, nonatomic) IBOutlet UIButton * favorite;
 @property (strong, nonatomic) IBOutlet UIProgressView * score;
 @property (strong, nonatomic) Movie * movie;
 

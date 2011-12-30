@@ -11,7 +11,7 @@
 #import "UIImageView+AFNetworking.h"
 
 @implementation MovieCell
-@synthesize name, poster, rating, score;
+@synthesize name, poster, rating, score, favorite;
 @synthesize movie=_movie;
 
 

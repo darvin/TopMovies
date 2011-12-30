@@ -19,5 +19,6 @@
 
 -(IBAction)favoriteButtonClicked:(UIButton*)sender;
 @property BOOL showFavorites;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem* favoriteButton;
 -(IBAction)toggleFavorites:(id)sender;
 @end

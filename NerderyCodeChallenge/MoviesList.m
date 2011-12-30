@@ -22,14 +22,14 @@
 }
 
 -(void) fetchTopTenBoxOfficeMovies{
-    NSSet* savedMoviesNames = [MovieData savedMoviesNames];
+    NSSet* savedMoviesNames = [MovieData savedMoviesIds];
     NSLog(@"%@", savedMoviesNames);
     NSURLRequest *request = [NSURLRequest requestWithURL:[RottenTomatoesAPI topBoxOfficeMoviesLimit:10+[savedMoviesNames count]]];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
             success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                 NSMutableArray * result = [[NSMutableArray alloc] init];
                 for (NSDictionary* movieProperties in [JSON objectForKey:@"movies"]) {
-                    if (![savedMoviesNames containsObject: [movieProperties objectForKey:@"title"]])
+                    if (![savedMoviesNames containsObject: [movieProperties objectForKey:@"id"]])
                         [result addObject:[[Movie alloc] initWithProperties:movieProperties]];
                 };
                 self.fetchedMovies = [NSArray arrayWithArray:result];
